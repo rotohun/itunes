@@ -3,7 +3,10 @@ import {Text} from 'react-native';
 import {Animated} from 'react-native';
 import AlbumDisplay from '../AlbumDisplay';
 
-const AlbumCarosel = ({scrollX, data}) => {
+const AlbumCarosel = ({scrollX, data, navigate}) => {
+  const navigateToDetails = (album) => {
+    navigate('AlbumsDetails', {album: album});
+  };
   if (!data) {
     return <Text>Lodaing...</Text>;
   }
@@ -25,6 +28,7 @@ const AlbumCarosel = ({scrollX, data}) => {
           scrollX={scrollX}
           key={item.category.attributes['im:id']}
           album={item}
+          onPress={() => navigateToDetails(item)}
         />
       )}
     />

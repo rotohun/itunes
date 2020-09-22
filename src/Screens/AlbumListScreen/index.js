@@ -5,7 +5,8 @@ import {getItunesTopAlbums} from '../../network';
 import Title from '../../components/structural/Title';
 import AlbumCarosel from '../../components/structural/AlbumCarosel';
 
-const AlbumListScreen = () => {
+const AlbumListScreen = ({navigation}) => {
+  const {navigate} = navigation;
   const [albums, setAlbums] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredAlbums, setFilteredAlbums] = useState([]);
@@ -40,7 +41,11 @@ const AlbumListScreen = () => {
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <Title />
       <SearchBarComponent value={search} onChangeText={searchFilter} />
-      <AlbumCarosel data={filteredAlbums} scrollX={scrollX} />
+      <AlbumCarosel
+        data={filteredAlbums}
+        scrollX={scrollX}
+        navigate={navigate}
+      />
     </SafeAreaView>
   );
 };

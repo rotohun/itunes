@@ -1,9 +1,9 @@
 import React from 'react';
 import {Animated, TouchableOpacity, View, Dimensions} from 'react-native';
 
-const {width, height} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const AlbumDisplay = ({album, index, scrollX}) => {
+const AlbumDisplay = ({album, index, scrollX, onPress}) => {
   const bgImage = album['im:image'][2].label;
   const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
   const inputRangeOpacity = [
@@ -31,7 +31,7 @@ const AlbumDisplay = ({album, index, scrollX}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log('hello');
+        onPress()
       }}
       style={{
         alignItems: 'center',
