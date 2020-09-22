@@ -31,7 +31,7 @@ const AlbumDisplay = ({album, index, scrollX, onPress}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        onPress()
+        onPress();
       }}
       style={{
         alignItems: 'center',

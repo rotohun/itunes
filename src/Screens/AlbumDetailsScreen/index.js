@@ -9,8 +9,9 @@ import {
   Linking,
   Alert,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-const AlbumDetailsScreen = ({route}) => {
+const AlbumDetailsScreen = ({route, navigation}) => {
   const {album} = route.params;
   const handlePress = useCallback(async (url) => {
     const supported = await Linking.canOpenURL(url);
@@ -23,6 +24,15 @@ const AlbumDetailsScreen = ({route}) => {
   }, []);
   return (
     <SafeAreaView style={{flex: 1}}>
+      <View>
+        <TouchableOpacity
+          style={{marginTop: 20, marginLeft: 20}}
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <Icon name="arrow-left" size={25} color="#000" />
+        </TouchableOpacity>
+      </View>
       <Animated.View
         style={{
           flex: 1,
