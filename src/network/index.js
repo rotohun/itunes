@@ -9,5 +9,8 @@ const apiAcess = Axios.create({
 
 export const getItunesTopAlbums = async () => {
   const {data} = await apiAcess();
-  return data;
+  if (data.feed) {
+    return data.feed.entry;
+  }
+  return null;
 };
